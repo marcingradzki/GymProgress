@@ -4,6 +4,16 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+
+const materialUI = [
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule,
+]
 
 @NgModule({
   declarations: [
@@ -13,6 +23,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ...materialUI,
   ],
   providers: [],
   bootstrap: [AppComponent]
