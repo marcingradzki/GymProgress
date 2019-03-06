@@ -1,11 +1,11 @@
 <mat-card>
   <form #form="ngForm" (ngSubmit)="submitForm()">
     <h2 class="mat-title">Login</h2>
-    <mat-form-field>
-      <input matInput name="username" placeholder="Login" autocomplete="off" [(ngModel)]="login" #loginModel="ngModel">
+    <mat-form-field [hideRequiredMarker]="true">
+      <input matInput name="username" placeholder="Login" autocomplete="off" [(ngModel)]="login" #loginModel="ngModel" required>
     </mat-form-field>
-    <mat-form-field>
-      <input type="password" matInput name="password" placeholder="Pasword" autocomplete="off" [(ngModel)]="password" #passwordModel="ngModel">
+    <mat-form-field [hideRequiredMarker]="true">
+      <input type="password" matInput name="password" placeholder="Pasword" autocomplete="off" [(ngModel)]="password" #passwordModel="ngModel" required>
     </mat-form-field>
     <button mat-raised-button color="primary">Log in</button>
     <div *ngIf="errorMsg">
