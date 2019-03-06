@@ -32,7 +32,7 @@ app.use(passport.session());
 passport.use(new LocalStrategy(
   async function(username, password, done) {
     try {
-      const user = await User.getUser({ username });
+      const user = await User.getUser(username);
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });
       }
@@ -57,9 +57,8 @@ passport.deserializeUser(async (id, done) => {
 
 app.use((req, res, next) => {
   const notProtectedUrls = ['/users/login', '/users/register'];
-  console.log(req.url);
   if(notProtectedUrls.includes(req.url) || req.isAuthenticated()) {
-    console.log('next');
+    console.log(req.body);
     next();
   } else {
     res.sendStatus(401);

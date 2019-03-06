@@ -27,14 +27,16 @@ export class LoginFormComponent implements OnInit {
   }
 
   submitForm() {
-    this.formService.logIn(this.form.value).subscribe(
-      data => {
-        this.router.navigate(['/main']);
-      },
-      error => {
-        this.errorMsg = "Invalid credentials";
-      }
-    );
+    if (this.form.submitted && this.form.valid) {
+      this.formService.logIn(this.form.value).subscribe(
+        data => {
+          this.router.navigate(['/main']);
+        },
+        error => {
+          this.errorMsg = "Invalid credentials";
+        }
+      );
+    }
   }
 
   ngOnInit() {}
