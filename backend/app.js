@@ -56,8 +56,10 @@ passport.deserializeUser(async (id, done) => {
 });
 
 app.use((req, res, next) => {
-  const notProtectedUrls = ['/users/login'];
+  const notProtectedUrls = ['/users/login', '/users/register'];
+  console.log(req.url);
   if(notProtectedUrls.includes(req.url) || req.isAuthenticated()) {
+    console.log('next');
     next();
   } else {
     res.sendStatus(401);

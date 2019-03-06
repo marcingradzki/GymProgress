@@ -14,7 +14,7 @@ router.get('/all', (req, res) => {
     .then(data => res.send(data));
 });
 
-router.post('/', (req, res) => {
+router.post('/register', (req, res) => {
   const { username, password } = req.body;
   User.addUser({ username, password })
     .then(data => res.send(data));
@@ -22,7 +22,8 @@ router.post('/', (req, res) => {
 
 router.post('/login',
   passport.authenticate('local'), (req, res) => {
-    res.send('Authenticated!');
+    console.log('no i tera pa');
+    res.status(200).send({});
   }
 );
 

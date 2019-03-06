@@ -1,0 +1,16 @@
+<mat-card>
+  <form #form="ngForm" (ngSubmit)="submitForm()">
+    <h2 class="mat-title">Login</h2>
+    <mat-form-field>
+      <input matInput name="username" placeholder="Login" autocomplete="off" [(ngModel)]="login" #loginModel="ngModel">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="password" matInput name="password" placeholder="Pasword" autocomplete="off" [(ngModel)]="password" #passwordModel="ngModel">
+    </mat-form-field>
+    <button mat-raised-button color="primary">Log in</button>
+    <div *ngIf="errorMsg">
+      {{ errorMsg }}
+    </div>
+    <a routerLink="/register">Or register account</a>
+  </form>
+</mat-card>
