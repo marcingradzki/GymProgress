@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
 import { LoginFormService } from '../login-form.service';
 import { MessageDialogComponent } from '../message-dialog/message-dialog.component';
 
@@ -21,6 +22,7 @@ export class RegisterFormComponent implements OnInit {
   constructor(
     private formService: LoginFormService,
     public dialog: MatDialog,
+    private router: Router
     ) { }
 
   openDialog(error: string): void {
@@ -45,7 +47,14 @@ export class RegisterFormComponent implements OnInit {
   submitForm() {
     if (this.form.submitted && this.form.valid && !this.errorMsg) {
       this.formService.register(this.form.value).subscribe(
-        data => console.log(data),
+        ({ username }: any) => {
+          const dialog = this.dialog.open(MessageDialogComponent, {
+            data: { message: `User ${username} created successfully! You can now log in` }
+          });
+          dialog.afterClosed().subscribe( result => {
+            this.router.navigate(['/login']);
+          });
+        },
         error => this.openDialog(error)
       );
     } else {

@@ -25,7 +25,7 @@ const getAll = () => {
   });
 }
 
-const getUser = ({ username }) => {
+const getUser = (username) => {
   return User.findOne({ where: { username } })
     .then(user => {
       return user

@@ -2,13 +2,41 @@
   <form #form="ngForm" (ngSubmit)="submitForm()">
     <h2 class="mat-title">Register</h2>
     <mat-form-field [hideRequiredMarker]="true">
-      <input matInput name="username" placeholder="Login" autocomplete="off" [(ngModel)]="login" #loginModel="ngModel" required>
+      <input
+        matInput
+        required
+        name="username"
+        placeholder="Login"
+        autocomplete="off"
+        [(ngModel)]="login"
+        #loginModel="ngModel"
+      >
     </mat-form-field>
     <mat-form-field [hideRequiredMarker]="true">
-      <input matInput name="password" placeholder="Pasword" autocomplete="off" [(ngModel)]="password" #passwordModel="ngModel" (keyup)="onChange()" required>
+      <input
+        matInput
+        required
+        name="password"
+        type="password"
+        placeholder="Pasword"
+        autocomplete="off"
+        [(ngModel)]="password"
+        #passwordModel="ngModel"
+        (keyup)="onChange()"
+      >
     </mat-form-field>
     <mat-form-field [hideRequiredMarker]="true">
-      <input matInput name="password2" placeholder="Repeat pasword" autocomplete="off" [(ngModel)]="password2" #passwordModel2="ngModel" (keyup)="onChange()" required>
+      <input
+        matInput
+        required
+        name="password2"
+        type="password"
+        placeholder="Repeat pasword"
+        autocomplete="off"
+        [(ngModel)]="password2"
+        #passwordModel2="ngModel"
+        (keyup)="onChange()"
+      >
     </mat-form-field>
     <div *ngIf="errorMsg">
       {{ errorMsg }}

@@ -16,13 +16,16 @@ router.get('/all', (req, res) => {
 
 router.post('/register', (req, res) => {
   const { username, password } = req.body;
-  User.addUser({ username, password })
+  User.getUser(username)
+    .then(data => {
+      if (data) res.sendStatus(404);
+      else return User.addUser({ username, password });
+    })
     .then(data => res.send(data));
 });
 
 router.post('/login',
   passport.authenticate('local'), (req, res) => {
-    console.log('no i tera pa');
     res.status(200).send({});
   }
 );
