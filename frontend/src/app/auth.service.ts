@@ -9,7 +9,7 @@ export class AuthService {
   logoutUrl: string = '/api/users/logout';
   registerUrl: string = '/api/users/register';
 
-  private _isLoggedIn: boolean;
+  private _isLoggedIn: boolean = true;
 
   constructor(private http: HttpClient) { }
 

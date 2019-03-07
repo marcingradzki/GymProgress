@@ -1,0 +1,17 @@
+<mat-sidenav-container class="container" (backdropClick)="sidenav.toggle()">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Menu</span>
+      <span class="spacer"></span>
+      <mat-icon class="icon" (click)="sidenav.toggle()">menu</mat-icon>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav #sidenav position="end" class="sidenav">
+    <mat-list role="list">
+      <mat-list-item role="listitem">Item 1</mat-list-item>
+      <mat-list-item role="listitem">Item 2</mat-list-item>
+      <mat-list-item role="listitem">Item 3</mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+</mat-sidenav-container>
