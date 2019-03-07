@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginFormService } from '../login-form.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'login-form',
@@ -17,7 +17,7 @@ export class LoginFormComponent implements OnInit {
   errorMsg: string;
 
   constructor(
-    private formService: LoginFormService,
+    private authService: AuthService,
     private router: Router
     ) { }
 
@@ -28,8 +28,9 @@ export class LoginFormComponent implements OnInit {
 
   submitForm() {
     if (this.form.submitted && this.form.valid) {
-      this.formService.logIn(this.form.value).subscribe(
+      this.authService.logIn(this.form.value).subscribe(
         data => {
+          this.authService.isLoggedIn = true;
           this.router.navigate(['/main']);
         },
         error => {

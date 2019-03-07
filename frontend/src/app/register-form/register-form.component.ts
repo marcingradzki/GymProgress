@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
-import { LoginFormService } from '../login-form.service';
+import { AuthService } from '../auth.service';
 import { MessageDialogComponent } from '../message-dialog/message-dialog.component';
 
 @Component({
@@ -20,7 +20,7 @@ export class RegisterFormComponent implements OnInit {
   errorMsg: string;
 
   constructor(
-    private formService: LoginFormService,
+    private formService: AuthService,
     public dialog: MatDialog,
     private router: Router
     ) { }

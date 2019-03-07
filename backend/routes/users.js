@@ -32,7 +32,11 @@ router.post('/login',
 
 router.get('/logout', (req, res) => {
   req.logout();
-  res.send('Logged out');
+  res.status(200).send({});
+});
+
+router.get('/main', (req, res) => {
+  res.status(200).send({});
 });
 
 module.exports = router;
